@@ -23,7 +23,24 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var strings = ['LaLALLaa', '??????', 'aieufhgaevg', 'AAAAA'];
+    var questions = [
+      {
+        'questionText': '?',
+        'answers': ['1', '2']
+      },
+      {
+        'questionText': '??',
+        'answers': ['3', '4']
+      },
+      {
+        'questionText': '???',
+        'answers': ['5', '6']
+      },
+      {
+        'questionText': '????',
+        'answers': ['7', '8']
+      },
+    ];
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -31,9 +48,10 @@ class _MyAppState extends State<MyApp> {
       ),
       body: Column(
         children: [
-          Question(strings[_questionIndex]),
-          Answer('Answer 1', _answerQuestion),
-          Answer('Answer 2', _answerQuestion),
+          Question(questions[_questionIndex]['questionText']),
+          ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
+            return Answer(answer, _answerQuestion);
+          }).toList(),
         ],
       ),
     ));
