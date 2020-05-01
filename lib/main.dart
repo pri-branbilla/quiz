@@ -30,6 +30,13 @@ class _MyAppState extends State<MyApp> {
     },
   ];
 
+  void _resetQuiz() {
+    setState(() {
+      _totalScore = 0;
+      _questionIndex = 0;
+    });
+  }
+
   void _answerQuestion(int score) {
 
     _totalScore += score;
@@ -39,8 +46,6 @@ class _MyAppState extends State<MyApp> {
         _questionIndex = _questionIndex + 1;
       });
     }
-
-    print('answer chosen');
   }
 
   @override
@@ -48,14 +53,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: Text('test'),
+        title: Text('Quiz'),
       ),
       body: _questionIndex < questions.length
           ? Quiz(
             questions: questions,
             questionIndex: _questionIndex,
             answerQuestion: _answerQuestion)
-          : Result(_totalScore),
+          : Result(_totalScore, _resetQuiz),
     ));
   }
 }
