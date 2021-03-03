@@ -1,6 +1,6 @@
-# flutter_complete_guide
+# Simple Quiz - Flutter
 
-A new Flutter project.
+A new Flutter project create to learn the basics. This is a simple quiz which you can have different score in the end depending on your choices.
 
 ## Getting Started
 
